@@ -1,8 +1,14 @@
-github 网页链接
-https://github.com/liyang-007/vue-study
+github 网页链接 
 
-vue 学习计划
-第一天   起步，概述，vue实例，  
-第二天  数据绑定语法，计算属性，class和style绑定。
-第三天  条件渲染，列表渲染
-第四天  方法与事件处理器，表单控件绑定。
+https://github.com/liyang-007/vue-study 
+
+
+vue 学习计划 
+第一天   
+  vue实例，数据绑定方法    计算属性                                                        
+第二天   
+  class和style绑定，条件渲染，列表渲染 ，方法与事件处理器                         
+第三天     
+  表单控件绑定，过渡，组件 ， 深入响应式原理                                               
+第四天   
+  自定义指令，自定义过滤器 ，混合                                                
