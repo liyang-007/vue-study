@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+    <div id="bind">
+        <h1>v-if</h1>
+        <p v-if="ok">我们是一家人</p>
+        <button  onclick="mydb()">显示</button>
+        <button  onclick="mydb2()">隐藏</button><br />
+        <code>在 Console 里设置 `vm.ok = true` 即可显示 </code>
+    </div>
+</body>
+<script>
+    var vm = new Vue ({
+        el: '#bind',
+        data: {
+            ok : false
+        }
+    })
+
+    function mydb () {
+        vm.ok=true
+
+    }
+        function mydb2 () {
+        vm.ok=false
+    }
+    
+</script>
+</html>
