@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+</head>
+<body>
+    <h3>基础例子</h3>
+    <div id="exam-1">
+        a={{ a }}, b={{ b }}
+    </div>
+
+    <br />
+    <h3>计算属性</h3>
+    <div id="exam-2">{{ fullName }}</div>
+<script>
+    var vm = new Vue({
+        el: '#exam-1',
+        data: {
+            a: 1
+        },
+        computed: {
+            b: function () {
+                return this.a + 1
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: '#exam-2',
+        data: {
+            firstName: 'traim',
+            lastName: 'rain'
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+    </script>
+  </body>
+</html>
