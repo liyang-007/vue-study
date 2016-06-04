@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>vue实例  列表渲染</title>
+      <meta charset="utf-8">
+      <script  src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+         <ul>
+         	<li  v-for="todo in todos">
+                      {{  todo.text  }}		
+         	</li>
+         </ul>  	
+    </div>
+    <script>
+      new Vue({
+            el: '#app',
+            data: {
+                  todos: [
+                                 { text: '张三' },
+                                 { text: '李四' },
+                                 { text: '王五' },
+                                 { text: '袁恒' }
+                              ]
+                        }
+                  })	
+    </script>
+  </body>
+</html>
