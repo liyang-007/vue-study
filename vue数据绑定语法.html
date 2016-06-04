@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <title>数据绑定语法</title>
+</head>
+<body>
+   <h1>文本</h1>
+    <div id="exam-1">
+        <span>Message: {{ msg }}</span><br>
+        <span>插值 Message: {{* msg }}</span><br>
+    </div>
+
+    <br />
+
+    <h1>原始HTML</h1>
+    <div id="exam-2">{{{ raw_html }}}</div>
+
+    <br />
+
+    <h1>参数</h1>
+    <a id="exam-3" v-bind:href="url">链接</a>
+
+    <br />
+    <h1>缩写</h1>
+    <a id="exam-4" :href="url">链接</a>
+
+    <br />
+    <h1>过滤器</h1>
+     <div id="exam-5">
+        <h2>数据双向绑定</h2>
+           <input v-model="message" style="font-size: 1em;" /><br><br>
+              {{ message }} <br><br>
+              {{ message | capitalize }} <br><br>
+              {{ message | uppercase }} <br><br>
+     </div>
+</body>
+<script>
+    new Vue({
+        el: '#exam-1',
+        data: {
+            msg: 'Hello Vue,js!'
+        }
+    })
+    new Vue({
+        el: '#exam-2',
+        data: {
+            raw_html: '<p> 这是插入的HTML内容 </p>'
+        }
+    })
+ 
+    new Vue({
+        el:'#exam-3',
+        data: {
+            url : 'https://github.com/liyang-007/vue-study'
+        }
+    })
+    new Vue({
+        el:'#exam-4',
+        data: {
+            url : 'https://github.com/liyang-007/vue-study'
+        }
+    })
+  var vm = new Vue({
+       el: '#exam-5',
+       data: {
+           message: 'something    is    possible'
+      }
+   })
+  </script>
+</html>
