@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <title>Class与Style绑定</title>
+</head>
+<body>
+    <h1>绑定 HTMLClass</h1>
+    <h3>对象语法</h3>
+    <div id="exam-1" class="static" v-bind:class="{ 'class-a': isA, 'class-b':isB }">test</div>
+    <h3>数组语法</h3>
+    <div id="exam-2" v-bind:class="[classA, classB]">test</div>
+    <br />
+    <h1>绑定内联样式</h1>
+    <h3>对象语法</h3>
+    <div id="exam-3" v-bind:style="{ color: activeColor, fontSize + 'px'}">test</div>
+    <!--<div id="exam-3"  v-bind:style="style0bject">text</div>-->
+    <h3>数组语法</h3>
+    <div id="exam-4" v-bind:style="[styleObjectA, styleObjectB]">test</div>
+<script>
+    var vm = new Vue({
+        el: '#exam-1',
+        data: {
+            isA: true,    
+            isB: false    
+        }
+    })
+    var vm = new Vue({
+        el: '#exam-2',
+        data: {
+         classA: 'class-a',
+         classB: 'class-b'
+        }
+    })
+    var vm = new Vue({
+        el: '#exam-3',
+        data: {
+           activeColor: 'yellow',
+           fontSize: 120
+          }
+    })
+    var vm = new Vue({
+        el: '#exam-4',
+        data: {
+        styleObjectA{
+             color: 'red'
+         }
+        styleObjectB{
+             fontsize: '13px'
+          }
+        }
+    })
+    </script>
+  </body>
+</html>
