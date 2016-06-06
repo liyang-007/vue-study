@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+   <head>
+	<title>vue方法与事件处理器</title>
+	<script src="vue.js"></script>
+              <meta charset="UTF-8">
+   </head>
+   <body>
+            <div id="exam-1">
+                  <h1>方法处理器 </h1>
+                  <button v-on:click="greet">Greet</button>
+            </div>
+         
+           <div  id="exam-2">
+                <h1>内联语句处理器</h1>
+                 <button  v-on:click="say('hello  word')">say   hello  word</button>
+                 <button  v-on:click="say('what')">say   what</button>	
+           </div>
+
+            <div>
+            	 <h1>事件修饰符</h1>
+                     <a v-on:click.stop="doThis"></a>
+                    <form v-on:submit.prevent="onSubmit"></form>
+                    <a v-on:click.stop.prevent="doThat"></a>
+                    <iframe v-on:click.stop.prevent></iframe>
+            </div>
+
+            <div>
+            	   <h1>按键修饰符</h1>
+            	        <input @keyup.enter="submit">
+            </div>
+       <script>
+         var vm = new Vue({
+                    el: '#exam-1',
+                    data: {
+                                    name: 'Vue.js'
+                   },
+                     // 在 `methods` 对象中定义方法
+                    methods: {
+                           greet: function (event) {
+                                   // 方法内 `this` 指向 vm
+                                   alert('Hello ' + this.name + '!')
+                                   // `event` 是原生 DOM 事件
+                                   alert(event.target.tagName)
+                            }
+                    }
+            })
+        
+        new  Vue ({
+        	 el:  '#exam-2',
+        	 methods:  {
+        	 	say:  function (msg)  {
+        	 		alert (msg)
+        	 	}
+        	    }
+        })
+
+       </script>
+   </body>
+</html>
