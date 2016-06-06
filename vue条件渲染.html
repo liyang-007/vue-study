@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<body>
+    <div id="exam-1">
+        <h1>v-if<possible</p>
+        <code>在 Console 里设置 `vm.ok = true` 即可显示 </code>
+        <button onclick="vm.ok=true">显示</button>
+        <button onclick="vm.ok=false">隐藏</button>
+        <br /><br /><br /><br />
+        <h3>v-if + v-else</h3>
+        <p v-if="if">袁恒</p>
+        <p v-else>陈延东</p>
+        <code>在 Console 里设置 `vm.if = true` `vm.if = false` 即可更改状态 </code>
+        <button onclick="vm.if=true">袁恒</button>
+        <button onclick="vm.if=false">陈延东</button>
+
+        <br /><br /><br /><br />
+       <h1>v-show</h1>
+        <p v-show="show">Hello   word</p>
+        <code>在 Console 里设置 `vm.show = true` `vm.if = show` 即可更改状态 </code>
+        <button onclick="vm.show=true">显示</button>
+        <button onclick="vm.show=false">隐藏</button><br>
+    </div>
+     <br /><br /><br /><br />   
+    <div id="exam-2">
+        <h1>组件警告</h1>
+        <custom-component  v-show="condition"></custom-component>
+        <p  v-else>这可能也是一个组件</p>
+        <code>v-show 替换 v-else</code>
+
+        <custom-component  v-show="condition"></custom-component>
+        <p  v-show="!condition">这可能也是一个组件</p>
+    </div>
+      <br /><br /><br /><br />  
+    <h1>v-if  vs.  v-show</h1>
+    <h2> v-if 之中的模板也可能包括数据绑定或子组件,  v-if 是真实的条件渲染，因为它会确保条件块在切换当中合适地销毁与重建条件块内的事件监听器和子组件。</h2><br/ >
+    <h2>v-show 简单得多——元素始终被编译并保留，只是简单地基于 CSS 切换</h2><br />
+    <h2>  v-if 有更高的切换消耗而v-show有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。</h2>
+  <script>
+    var vm = new Vue ({
+        el: '#exam-1',
+        data: {
+            ok : false,
+            if : true,
+            show : true
+        }
+    })
+   </script>
+ </body>
+</html>
