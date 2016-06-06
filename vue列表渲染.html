@@ -6,25 +6,121 @@
       <script  src="vue.js"></script>
   </head>
   <body>
-    <div id="app">
+    <div id="exam-1">
+      <h1>v-for</h1>
          <ul>
          	<li  v-for="todo in todos">
                       {{  todo.text  }}		
          	</li>
          </ul>  	
     </div>
-    <script>
+
+    <div>
+        <ul id="exam-2">
+           <li v-for="item in items">
+               {{ item.message }}
+           </li>
+        </ul>
+    </div>
+
+    <div>
+     <h3>元素索引: $index</h3>
+      <ul  id="exam-3">
+         <li  v-for="item  in  items">
+                 {{ parentMessage }} - {{ $index }} - {{ item.message }} <br />
+                 {{ index }}   {{ item.message }}
+         </li>
+      </ul>
+    </div>
+
+     <div  id="exam-4">
+       <h1>template  v-for</h1>
+          <ul>
+            <template  v-for="item  in  items">
+                <li>{{ item.msg }}</li>
+                <li  class="divider"></li>
+            </template>
+          </ul>
+     </div>
+
+     <div>
+         <h1>数组变动检测</h1>
+        <button onclick="bind.items.push({message: 'Biz'})">bind.items.push({message: 'Biz'})</button>
+     </div>
+
+     <div >
+       <h1>对象 v-for</h1>
+        <ul  id="exam-5"  class="demo">
+            <li v-for="value in object">
+                {{ $key }} : {{ value }}
+            </li>
+        </ul>
+     </div>
+
+     <div>
+       <h1>显示过滤/排序的结果</h1>
+        <code>1.创建一个计算属性，返回过滤/排序过的数组</code><br />
+        <code>2.使用内置的过滤器 filterBy 和 orderBy</code>
+     </div>
+     <div>
+         <h1>值域 v-for</h1>
+         <span v-for="n  in 15"> {{ n }} </span>
+     </div>
+
+     <script>
       new Vue({
-            el: '#app',
+            el: '#exam-1',
             data: {
                   todos: [
                                  { text: '张三' },
                                  { text: '李四' },
                                  { text: '王五' },
                                  { text: '袁恒' }
+                               ]
+                   }
+        })	
+
+    var example1 = new Vue({
+            el: '#exam-2',
+            data: {
+                  items: [
+                                { message: 'Foo' },
+                                { message: 'Bar' }
                               ]
-                        }
-                  })	
+                   }
+         })
+
+    var example2 = new Vue({
+            el: '#exam-3',
+            data: {
+                 parentMessage: 'Parent',
+                 items: [
+                               {message: 'yuanheng'},
+                               {message: 'chenyandong'}
+                             ]
+                    }
+         })
+
+     var example3 = new Vue({
+            el: '#exam-4',
+            data: {
+                 items: [
+                                { msg: 'Foo' },
+                                { msg: 'Bar' }
+                             ]
+                    }
+         })
+  
+      var example4 = new Vue({
+            el: '#exam-5',
+            data:  {
+              object: {
+                               FirstName: 'John',
+                               LastName: 'Doe',
+                               Age: 30
+                             }
+                     }
+          })
     </script>
   </body>
 </html>
