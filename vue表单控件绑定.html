@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue表单控件绑定</title>
+	<meta charset="utf-8">
+	<script src="vue.js"></script>
+</head>
+<body>
+                <div  id="exam-1">
+                     <h1>Text</h1>
+                     <span>Message  is:  {{  message  }}</span>	
+                     <br>
+                     <input  type="text"   v-model="message"   placeholder="edit   me">
+                </div>
+                <br /><br />
+                <div  id="exam-2">
+	      <h1>ChecKbox</h1>
+	      <input  type="checkbox"   id="checkbox"  v-model="checked">
+	      <label  for="checkbx">{{ checked }}</label>
+                </div>
+                <br /><br />
+                <div  id="exam-3">
+                   <h1>多个勾选框，绑定到同一个数组</h1>
+                     <input  type="checkbox"  id="jack"  value="jack"  v-model="checkedNames">
+                     <label  for="jack">Jack</label>
+                     <input  type="checkbox" id="john"  value="john"  v-model="checkedNames">
+                     <label   for="john">john</label>
+                     <input  type="checkbox" id="mike" value="mike" v-model="checkedNames"></input>
+                     <label  for="mike">mike</label>
+                     <br>  
+                     <span>Checked  names:  {{  checkedNames  |   json  }}</span>
+                </div>
+                <br /><br />
+                <div id="exam-4">
+                   <h1>Radio</h1>
+                      <input  type="radio"  id="one"  value="0ne"  v-model="picked">
+                      <label  for="one">0ne</label>
+                      <br>
+                      <input  type="radio"  id="two"  value="Two"  v-model="picked">
+                      <label  for="two">Two</label>
+                      <br>
+                      <span>Picked:  {{  picked  }}</span>
+                </div>
+                <br /><br />
+                <div  id="exam-5">
+                    <h1>#select</h1> 
+                        <select  v-model="selected">
+                            	<option  selected>A</option>
+                            	<option>B</option>
+                            	<option>C</option>
+                        </select>	
+                     <span>Selected:  {{  selected  }}</span>
+                </div>
+                <br /><br />
+                <div  id="exam-6">
+                        <h2>多选(绑定到同一个数组)</h2>
+                        <select  v-model="selected"  multiple>
+                        	<option  selected>A</option>
+                             <option>B</option>
+                             <option>C</option>
+                        </select>
+                        <br>
+                        <span>Selected:  {{  selected  |  json  }}</span>
+                </div>
+                <br /><br />
+                <div  id="exam-7">
+                         <h2>动态选项，用 v-for 渲染 </h2>
+                         <select  v-model="selected">
+                         	 <option  v-for="option  in  options"  v-bind:value="option.value">
+                                   {{  option.text  }}	 	
+                         	 </option>
+                         </select>
+                         <span>Selected:  {{  selected  }}</span>
+                </div>
+                <script >
+                	  var vm = new Vue({
+                                            el: '#exam-1',
+                                            data: {
+                                                            message: '',
+                                                        }
+                                                    })
+ 
+                               var vm = new Vue({
+                                            el: '#exam-2',
+                                            data: {
+                                                            checked: false,
+                                                        }
+                                                    })
+                              
+                               var  vm = new Vue ({
+                               	el:  '#exam-3',
+                               	data: {
+                               		checkedNames:  []
+                               	}
+                               }) 
+                                
+                                 var vm = new Vue({
+                                            el: '#exam-4',
+                                            data: {
+                                                            selected: 'A',
+                                                        }
+                                                    })
+
+                                 var vm = new  Vue({
+                                 	el: '#exam-5',
+                                 	data: {
+                                                           selected: 'A',
+                                                           options: [
+                                                                              { text: 'One', value: 'A' },
+                                                                              { text: 'Two', value: 'B' },
+                                                                              { text: 'OThree', value: 'C' }
+                                                                          ]
+                                 	        }
+                                   })
+
+                                 var vm = new  Vue({
+                                 	el: '#exam-6',
+                                 	data: {
+                                                           selected: 'A',
+                                                           options: [
+                                                                              { text: 'One', value: 'A' },
+                                                                              { text: 'Two', value: 'B' },
+                                                                              { text: 'OThree', value: 'C' }
+                                                                          ]
+                                 	        }
+                                   })
+
+                                 var vm = new  Vue({
+                                 	el: '#exam-7',
+                                 	data: {
+                                                           selected: 'A',
+                                                           options: [
+                                                                              { text: 'One', value: 'liyang' },
+                                                                              { text: 'Two', value: 'yuanheng' },
+                                                                              { text: 'Three', value: 'chenyandong' }
+                                                                          ]
+                                 	        }
+                                   })
+                </script>
+</body>
+</html>
