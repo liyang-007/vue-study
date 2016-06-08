@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+     <head>
+	<title>vue 自定义指令</title>
+	<script src="vue.js"></script>
+	<meta charset="utf-8">
+    </head>
+    <body>
+           <h1>指令实例属性</h1>
+           <div id="demo" v-demo:hello.a.b="msg"></div>
+    
+           <br /><br /><br />
+         
+           <h1>高级选项</h1>
+           	<div id="modal"></div>
+           	  <div v-inject:modal>
+                     <h3>header</h3>
+                     <p>body</p>
+                     <p>footer</p>
+               </div>
+   
+           <script >
+            Vue.directive('demo', {
+                bind: function () {
+                                  console.log('demo bound!')
+                     },
+                update: function (value) {
+                     this.el.innerHTML =
+                                 'name - '       + this.name + '<br>' +
+                                 'expression - ' + this.expression + '<br>' +
+                                 'argument - '   + this.arg + '<br>' +
+                                 'modifiers - '  + JSON.stringify(this.modifiers) + '<br>' +
+                                 'value - '      + value
+                    }
+             })
+                   var demo = new Vue({
+                            el: '#demo',
+                            data: {
+                                          msg: 'hello  vue.js!'
+                    }
+             })
+
+            var FragmentFactory = Vue.FragmentFactory
+            var remove = Vue.util.remove 
+            var createAnchor = Vue.util.createAnchor
+
+            Vue.directive('inject', {
+	    terminal: true,
+	    bind: function () {
+	    var container = document.getElementById(this.arg)
+	    this.anchor = createAnchor('v-inject')
+	    container.appendChild(this.anchor)
+	    remove(this.el)
+	    var factory = new FragmentFactory(this.vm, this.el)
+	    this.frag = factory.create(this._host, this._scope, this._frag)
+	    this.frag.before(this.anchor)
+	  },
+	  unbind: function () {
+	           this.frag.remove()
+	           remove(this.anchor)
+	     }
+	})
+       </script>
+   </body>
+</html>
